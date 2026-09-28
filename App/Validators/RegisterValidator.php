@@ -10,7 +10,7 @@ class RegisterValidator{
 
      public static function for_create_temporal_register(array $data){
         $validator=v::key('total_sell' , v::numericVal()->positive())
-        ->key('pay_method' , v::stringType()->notEmpty()->length(1,100));
+        ->key('pay_method' , v::stringType()->notEmpty()->length(0,100));
         
         if(!$validator->validate($data)){
             http_response_code(400);

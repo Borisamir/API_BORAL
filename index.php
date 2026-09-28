@@ -2,9 +2,24 @@
 
 use App\Middleware\Middleware;
 use App\Middleware\RateLimiter;
+use Dotenv\Dotenv;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+Dotenv::createImmutable(__DIR__)->load();
 
 date_default_timezone_set('America/Lima');
-header("Access-Control-Allow-Origin: http://localhost:8001");
+
+$allowed_origins = array_map('trim', explode(',', $_ENV['CORS_ORIGINS'] ?? ''));
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+
+if (in_array($origin, $allowed_origins, true)) {
+    header("Access-Control-Allow-Origin: $origin");
+}
+header("Vary: Origin");
+
+ini_set('session.cookie_domain', $_ENV['COOKIE_DOMAIN'] ?? '');
+
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization , X-CSRF-TOKEN");
 header("Access-Control-Allow-Credentials: true");

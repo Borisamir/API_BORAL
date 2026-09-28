@@ -53,6 +53,7 @@ class Service_User {
              setcookie('jwt', '', [
                  'expires' => time() - 3600,
                  'path' => '/',
+                 'domain' => $_ENV['COOKIE_DOMAIN'] ?? '',
                  'secure' => true,
                  'httponly' => true,
                  'samesite' => 'Lax'
@@ -97,6 +98,7 @@ class Service_User {
                  'jwt',$token,[
                     'expires'=> time() + 3600,
                     'path' => '/',
+                 'domain' => $_ENV['COOKIE_DOMAIN'] ?? '',
                     'secure' => true,
                     'httponly' => true,
                     'samesite' => 'Lax'
@@ -133,6 +135,7 @@ class Service_User {
               setcookie('jwt', '', [
                  'expires' => time() - 3600,
                  'path' => '/',
+                 'domain' => $_ENV['COOKIE_DOMAIN'] ?? '',
                  'secure' => true,
                  'httponly' => true,
                  'samesite' => 'Lax'
@@ -143,6 +146,7 @@ class Service_User {
               setcookie('jwt', '', [
                  'expires' => time() - 3600,
                  'path' => '/',
+                 'domain' => $_ENV['COOKIE_DOMAIN'] ?? '',
                  'secure' => true,
                  'httponly' => true,
                  'samesite' => 'Lax'
