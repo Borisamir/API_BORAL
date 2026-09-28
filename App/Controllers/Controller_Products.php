@@ -136,7 +136,8 @@ class Controller_Products{
 
             return json_encode([
                "cantidad_productos" => $count_products,
-               "cantidad_productos_ws" => $count_products_ws
+               "cantidad_productos_ws" => $count_products_ws,
+               "state" => true
             ]);
 
             
